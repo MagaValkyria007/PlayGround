@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#10131e" />
+  <title>Crise Infinita — RPG de Turno</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <button class="brand" data-view="battle" aria-label="Ir para batalha"><span class="brand-mark">✦</span><span><b>CRISE</b><small>INFINITA</small></span></button>
+      <div class="resource-bar"><div class="resource"><span class="resource-icon gold">◈</span><strong id="gold">1.250</strong><small>OURO</small><button data-action="goldInfo" aria-label="Detalhes do ouro">＋</button></div><div class="resource"><span class="resource-icon gem">◆</span><strong id="gems">120</strong><small>CRISTAIS</small><button data-action="gemInfo" aria-label="Detalhes dos cristais">＋</button></div></div>
+      <button class="profile" data-action="profile"><span class="profile-avatar">B</span><span><b>Parceiro</b><small>NÍVEL <span id="playerLevel">12</span></small></span><span class="chevron">⌄</span></button>
+    </header>
+    <main>
+      <section id="battleView" class="view active">
+        <div class="battle-heading"><div><div class="eyebrow"><span class="live-dot"></span> CAMPANHA PRINCIPAL</div><h1>Setor <span id="sector">07</span><em> · </em><span id="stage">12</span></h1><p id="stageName">A invasão de Apokolips</p></div><div class="power-pill"><span>✦</span><div><small>PODER DA EQUIPE</small><b id="teamPower">24.850</b></div></div></div>
+        <div class="battle-layout">
+          <div class="arena-wrap">
+            <div class="arena" id="arena">
+              <div class="arena-sky"><div class="planet"></div><div class="stars"></div><div class="distant-city"></div></div>
+              <div class="arena-top"><div class="wave-chip"><span>⚔</span> ONDA <b id="wave">1</b><small>/ 3</small></div><button class="speed-btn" data-action="speed">▶▶ <span id="speedLabel">1×</span></button></div>
+              <div class="battlefield"><div class="team team-enemy" id="enemyTeam"></div><div class="arena-vs">VS</div><div class="team team-player" id="playerTeam"></div></div>
+              <div class="arena-bottom"><div class="battle-log" id="battleLog"><span class="log-dot"></span><span id="logText">A equipe está pronta para o combate.</span></div><div class="battle-controls"><button class="auto-toggle on" data-action="auto"><span class="toggle-dot"></span> AUTO</button><button class="ultimate-btn" data-action="ultimate"><span>✦</span> SUPREMO <kbd>Q</kbd></button></div></div>
+              <div class="combat-flash" id="combatFlash"></div>
+            </div>
+            <div class="stage-footer"><div><span class="check-icon">✓</span> Recompensa AFK acumulando <b id="idleTimer">00:00</b></div><button class="text-button" data-action="idle">COLETAR <span>›</span></button></div>
+          </div>
+          <aside class="squad-panel"><div class="panel-title"><div><small>FORMAÇÃO ATIVA</small><h2>Esquadrão <span>05</span></h2></div><button class="icon-btn" data-view="heroes" aria-label="Editar formação">↗</button></div><div id="squadList" class="squad-list"></div><div class="squad-bonus"><div class="bonus-icon">✧</div><div><b>Sinergia: Liga da Justiça</b><small>+12% de ataque · +8% de vida</small></div><span class="synergy-dot"></span></div><button class="primary-btn battle-cta" data-action="battle"><span>⚔</span> <span id="battleButtonText">INICIAR BATALHA</span><span class="btn-arrow">›</span></button></aside>
+        </div>
+        <div class="below-grid"><div class="objective-card"><div class="objective-icon">◎</div><div><small>OBJETIVO DIÁRIO</small><b>Complete 3 batalhas</b><div class="progress-line"><i id="objectiveProgress"></i></div></div><span id="objectiveCount">1/3</span><button data-action="objective">›</button></div><button class="event-card" data-action="event"><span class="event-tag">EVENTO · 2D 14H</span><b>Crise nas<br>Terras Infinitas</b><span class="event-link">ENTRAR NA CRISE <i>↗</i></span><span class="event-orb">✦</span></button></div>
+      </section>
+      <section id="heroesView" class="view">
+        <div class="page-heading"><div><div class="eyebrow">SEU MULTIVERSO</div><h1>Heróis & Vilões</h1><p>Monte sua formação e fortaleça quem vai salvar a Terra.</p></div><div class="roster-count"><b id="rosterCount">320</b><small>PERSONAGENS</small></div></div>
+        <div class="collection-tools"><div class="search-box"><span>⌕</span><input id="heroSearch" type="search" placeholder="Buscar personagem..." autocomplete="off" /></div><div class="filter-row" id="filters"><button class="filter active" data-filter="Todos">Todos <span>320</span></button><button class="filter" data-filter="Herói">Heróis</button><button class="filter" data-filter="Vilão">Vilões</button><button class="filter" data-filter="Equipe">Na equipe</button></div></div>
+        <div class="roster-summary"><span>COLEÇÃO</span><b id="ownedCount">5</b><small> / 320 recrutados</small><div class="collection-progress"><i></i></div><button class="summon-btn" data-action="summon">✦ RECRUTAR <small>1.000</small></button></div>
+        <div class="hero-grid" id="heroGrid"></div>
+      </section>
+      <section id="missionsView" class="view">
+        <div class="page-heading"><div><div class="eyebrow">CONQUISTAS DO MULTIVERSO</div><h1>Missões</h1><p>Ganhe recursos enquanto enfrenta a ameaça.</p></div><div class="roster-count"><b>03</b><small>DISPONÍVEIS</small></div></div>
+        <div class="mission-list" id="missionList"></div>
+      </section>
+      <section id="shopView" class="view">
+        <div class="page-heading"><div><div class="eyebrow">APOIE A LIGA</div><h1>Recompensas</h1><p>Troque seus recursos por poder para o esquadrão.</p></div></div>
+        <div class="shop-grid"><article class="shop-card featured"><span class="shop-badge">OFERTA DIÁRIA</span><div class="shop-art crystal-art">✦</div><h2>Pacote de Reforço</h2><p>500 ouro + 50 cristais para continuar a luta.</p><button class="primary-btn" data-action="daily">RESGATAR GRÁTIS</button></article><article class="shop-card"><div class="shop-art coin-art">◈</div><h2>Bolsa de Ouro</h2><p>Uma reserva para evoluir sua equipe.</p><button class="secondary-btn" data-action="goldInfo">VER OFERTAS <span>›</span></button></article><article class="shop-card"><div class="shop-art recruit-art">✧</div><h2>Recrutamento</h2><p>Uma nova lenda pode mudar o rumo da batalha.</p><button class="secondary-btn" data-action="summon">RECRUTAR · 1.000 ◈</button></article></div>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="Navegação principal"><button class="nav-item active" data-view="battle"><span>⚔</span><small>BATALHA</small></button><button class="nav-item" data-view="heroes"><span>♙</span><small>HERÓIS</small></button><button class="nav-item" data-view="missions"><span>◎</span><small>MISSÕES</small><i class="nav-dot"></i></button><button class="nav-item" data-view="shop"><span>◇</span><small>LOJA</small></button></nav>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="modal-backdrop" id="modal"><div class="modal-card"><button class="modal-close" data-action="closeModal">×</button><div id="modalContent"></div></div></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
